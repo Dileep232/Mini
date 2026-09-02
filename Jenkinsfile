@@ -47,14 +47,14 @@ pipeline {
                 '''
             }
         }
-       post {
-        always {
-         sh '''
-          docker rmi -f app:${BUILD_NUMBER} || true
-          docker rmi -f dileep232/app:${BUILD_NUMBER} || true
-          docker rmi -f dileep232/app:latest || true
-          docker image prune -f || true
-          '''
+        post {
+         always {
+          sh '''
+            docker rmi -f app:${BUILD_NUMBER} || true
+            docker rmi -f dileep232/app:${BUILD_NUMBER} || true
+            docker rmi -f dileep232/app:latest || true
+            docker image prune -f || true
+         '''
        }
    }
     }
