@@ -47,6 +47,7 @@ pipeline {
                 '''
             }
         }
+    }
         post {
          always {
           sh '''
@@ -56,8 +57,8 @@ pipeline {
             docker image prune -f || true
          '''
        }
-   }
-    }
-}
+     }
+ }
+
 
         
