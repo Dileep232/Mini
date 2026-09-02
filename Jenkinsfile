@@ -6,18 +6,18 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 deleteDir()
-                git 'https://github.com/Dileep232/K8s.git'
+                git 'https://github.com/Dileep232/Mini.git'
             }
         }
 
         stage('Docker Image Build') {
             steps {
                 sh '''
-                docker build -t new:${BUILD_NUMBER} .
+                docker build -t app:${BUILD_NUMBER} .
 
-                docker tag new:${BUILD_NUMBER} dileep232/new:${BUILD_NUMBER}
+                docker tag app:${BUILD_NUMBER} dileep232/app:${BUILD_NUMBER}
 
-                docker tag new:${BUILD_NUMBER} dileep232/new:latest
+                docker tag app:${BUILD_NUMBER} dileep232/app:latest
                 '''
             }
         }
@@ -41,9 +41,9 @@ pipeline {
         stage('Push Image to DockerHub') {
             steps {
                 sh '''
-                docker push dileep232/new:${BUILD_NUMBER}
+                docker push dileep232/app:${BUILD_NUMBER}
 
-                docker push dileep232/new:latest
+                docker push dileep232/app:latest
                 '''
             }
         }
