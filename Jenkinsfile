@@ -47,7 +47,19 @@ pipeline {
                 '''
             }
         }
+        stage('Deploy to Kubernetes') {
+    steps {
+        sh """
+        ssh -o StrictHostKeyChecking=no root@54.185.145.246 '
+        kubectl set image deployment/myapp-deployment \
+        myapp=dileep232/app:${BUILD_NUMBER}
+
+        kubectl rollout status deployment/myapp-deployment
+        '
+        """
     }
+  }
+}
         post {
          always {
           sh '''
