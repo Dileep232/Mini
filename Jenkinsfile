@@ -47,10 +47,16 @@ pipeline {
                 '''
             }
         }
-        stage('Deploy to Kubernetes') {
+stage('Deploy to Kubernetes') {
     steps {
         sh """
+        scp -o StrictHostKeyChecking=no deployment.yaml root@54.185.145.246:/root/
+        scp -o StrictHostKeyChecking=no service.yaml root@54.185.145.246:/root/
+
         ssh -o StrictHostKeyChecking=no root@54.185.145.246 '
+        kubectl apply -f /root/deployment.yaml
+        kubectl apply -f /root/service.yaml
+
         kubectl set image deployment/myapp-deployment \
         myapp=dileep232/app:${BUILD_NUMBER}
 
@@ -58,8 +64,8 @@ pipeline {
         '
         """
     }
-  }
 }
+    }
         post {
          always {
           sh '''
