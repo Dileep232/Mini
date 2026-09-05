@@ -50,10 +50,10 @@ pipeline {
 stage('Deploy to Kubernetes') {
     steps {
         sh """
-        scp -o StrictHostKeyChecking=no deployment.yaml root@54.185.145.246:/root/
-        scp -o StrictHostKeyChecking=no service.yaml root@54.185.145.246:/root/
+        scp -o StrictHostKeyChecking=no deployment.yaml root@18.61.83.98:/root/
+        scp -o StrictHostKeyChecking=no service.yaml root@18.61.83.98:/root/
 
-        ssh -o StrictHostKeyChecking=no root@54.185.145.246 '
+        ssh -o StrictHostKeyChecking=no root@18.61.83.98 '
         kubectl apply -f /root/deployment.yaml
         kubectl apply -f /root/service.yaml
 
