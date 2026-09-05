@@ -52,10 +52,12 @@ stage('Deploy to Kubernetes') {
         sh """
         scp -o StrictHostKeyChecking=no deployment.yaml root@18.61.83.98:/root/
         scp -o StrictHostKeyChecking=no service.yaml root@18.61.83.98:/root/
+        scp -o StrictHostKeyChecking=no ingress.yaml root@18.61.83.98:/root/
 
         ssh -o StrictHostKeyChecking=no root@18.61.83.98 '
         kubectl apply -f /root/deployment.yaml
         kubectl apply -f /root/service.yaml
+        kubectl apply -f /root/ingress.yaml
 
         kubectl set image deployment/myapp-deployment \
         myapp=dileep232/app:${BUILD_NUMBER}
