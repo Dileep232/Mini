@@ -6,7 +6,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 deleteDir()
-                git 'https://github.com/Dileep232/Mini.git'
+                git branch: 'app2', url: 'https://github.com/Dileep232/Mini.git'
             }
         }
 
