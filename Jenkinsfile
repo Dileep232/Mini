@@ -71,7 +71,7 @@ stage('Deploy to Kubernetes') {
         post {
          always {
           sh '''
-            docker rmi -f app:${BUILD_NUMBER} || true
+            docker rmi -f app2:${BUILD_NUMBER} || true
             docker rmi -f dileep232/app2:${BUILD_NUMBER} || true
             docker rmi -f dileep232/app2:latest || true
             docker image prune -f || true
