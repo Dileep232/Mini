@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Office Login Portal</title>
+<title>Corporate Login</title>
 
 <style>
 
@@ -11,7 +11,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -19,110 +19,103 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background: linear-gradient(
-        135deg,
-        #ff6b6b,
-        #feca57,
-        #48dbfb,
-        #5f27cd
-    );
-    background-size:400% 400%;
-    animation:gradient 10s ease infinite;
+    background:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72') no-repeat center center/cover;
 }
 
-@keyframes gradient{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
-
-.login-box{
-    width:400px;
-    padding:40px;
+.container{
+    width:380px;
+    padding:35px;
     border-radius:20px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    box-shadow:0 8px 32px rgba(0,0,0,0.25);
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(12px);
+    color:white;
     text-align:center;
-    color:white;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
 }
 
-.login-box h1{
+.logo{
+    font-size:50px;
     margin-bottom:10px;
-    font-size:32px;
 }
 
-.login-box p{
+h2{
+    margin-bottom:10px;
+}
+
+p{
     margin-bottom:25px;
-    color:#f1f1f1;
+    color:#ddd;
 }
 
-.input-box{
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-group input{
     width:100%;
     padding:14px;
-    margin:12px 0;
     border:none;
-    border-radius:10px;
+    border-radius:8px;
     outline:none;
-    font-size:16px;
+    background:rgba(255,255,255,0.15);
+    color:white;
 }
 
-.login-btn{
+.input-group input::placeholder{
+    color:#ddd;
+}
+
+.btn{
     width:100%;
     padding:14px;
-    margin-top:15px;
     border:none;
-    border-radius:10px;
-    background:#ff9f43;
+    border-radius:8px;
+    background:#00c853;
     color:white;
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
     cursor:pointer;
     transition:0.3s;
 }
 
-.login-btn:hover{
-    background:#ff6b6b;
-    transform:scale(1.03);
+.btn:hover{
+    background:#00a844;
+}
+
+.links{
+    margin-top:15px;
+}
+
+.links a{
+    color:#66d9ff;
+    text-decoration:none;
 }
 
 .footer{
     margin-top:20px;
-    font-size:14px;
-    color:#f5f5f5;
+    font-size:12px;
+    color:#ccc;
 }
 
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="login-box">
+<div class="container">
 
-    <h1>🚀 Office Portal</h1>
-    <p>Sign in to continue</p>
+    <div class="logo">🏢</div>
+
+    <h2>Corporate Portal</h2>
+    <p>Secure Employee Login</p>
 
     <form>
-        <input type="text"
-               class="input-box"
-               placeholder="Enter Employee ID"
-               required>
+        <div class="input-group">
+            <input type="text" placeholder="Employee ID" required>
+        </div>
 
-        <input type="password"
-               class="input-box"
-               placeholder="Enter Password"
-               required>
+        <div class="input-group">
+            <input type="password" placeholder="Password" required>
+        </div>
 
-        <button class="login-btn">
-            Login
-        </button>
-    </form>
-
-    <div class="footer">
-        © 2026 Office Management | Capgemini
-    </div>
-
-</div>
-
-</body>
-</html>
+        <button class
