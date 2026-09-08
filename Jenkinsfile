@@ -59,10 +59,10 @@ stage('Deploy to Kubernetes') {
         kubectl apply -f /root/service.yaml
         kubectl apply -f /root/ingress.yaml
 
-        kubectl set image deployment/myapp-deployment \
-        myapp=dileep232/app2:${BUILD_NUMBER}
+        kubectl set image deployment/app2-deployment \
+        app2=dileep232/app2:${BUILD_NUMBER}
 
-        kubectl rollout status deployment/myapp-deployment
+        kubectl rollout status deployment/app2-deployment
         '
         """
     }
@@ -72,8 +72,8 @@ stage('Deploy to Kubernetes') {
          always {
           sh '''
             docker rmi -f app:${BUILD_NUMBER} || true
-            docker rmi -f dileep232/app:${BUILD_NUMBER} || true
-            docker rmi -f dileep232/app:latest || true
+            docker rmi -f dileep232/app2:${BUILD_NUMBER} || true
+            docker rmi -f dileep232/app2:latest || true
             docker image prune -f || true
          '''
        }
