@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myapp-ingress
+  name: app2-ingress
 spec:
   ingressClassName: nginx
   rules:
   - http:
       paths:
-      - path: /
+      - path: /app2
         pathType: Prefix
         backend:
           service:
-            name: myapp-service
+            name: app2-service
             port:
               number: 80
