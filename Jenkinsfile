@@ -13,11 +13,11 @@ pipeline {
         stage('Docker Image Build') {
             steps {
                 sh '''
-                docker build -t app:${BUILD_NUMBER} .
+                docker build -t app2:${BUILD_NUMBER} .
 
-                docker tag app:${BUILD_NUMBER} dileep232/app:${BUILD_NUMBER}
+                docker tag app2:${BUILD_NUMBER} dileep232/app2:${BUILD_NUMBER}
 
-                docker tag app:${BUILD_NUMBER} dileep232/app:latest
+                docker tag app2:${BUILD_NUMBER} dileep232/app2:latest
                 '''
             }
         }
@@ -41,9 +41,9 @@ pipeline {
         stage('Push Image to DockerHub') {
             steps {
                 sh '''
-                docker push dileep232/app:${BUILD_NUMBER}
+                docker push dileep232/app2:${BUILD_NUMBER}
 
-                docker push dileep232/app:latest
+                docker push dileep232/app2:latest
                 '''
             }
         }
@@ -60,7 +60,7 @@ stage('Deploy to Kubernetes') {
         kubectl apply -f /root/ingress.yaml
 
         kubectl set image deployment/myapp-deployment \
-        myapp=dileep232/app:${BUILD_NUMBER}
+        myapp=dileep232/app2:${BUILD_NUMBER}
 
         kubectl rollout status deployment/myapp-deployment
         '
