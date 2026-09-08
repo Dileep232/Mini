@@ -117,7 +117,7 @@ body{
             Login
         </button>
     </form>
-   <a href="/app2"> Open application 2</a>
+   <a href="http://18.61.227.64:8081"> Open application 2</a>
 
     <div class="footer">
         © 2026 Office Management | Capgemini
